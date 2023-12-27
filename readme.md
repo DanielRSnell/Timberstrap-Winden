@@ -2,6 +2,31 @@
 
 This child theme for Picostrap leverages the Timber 2.X library, enabling advanced templating in WordPress using the Twig engine. It introduces the 'Agnostic' shortcode for inline Twig templating, providing a seamless integration of Twig directly within WordPress posts and pages.
 
+## Installation Guide
+
+### Step 1: Install Picostrap
+
+Start by installing the Picostrap theme. This can be done directly from the WordPress theme repository.
+
+### Step 2: Clone or Download the Child Theme
+
+Clone the child theme repository or download the zip file:
+
+- For cloning, use: `git clone [repository-url]`
+- For downloading, visit `[download-link]` and download the zip file.
+
+### Step 3: Install Winden
+
+Install the Winden plugin. This can typically be done from the WordPress plugin repository or from a provided zip file.
+
+### Step 4: Install Livecanvas
+
+Proceed to install the Livecanvas plugin. Like Winden, this can be done via the WordPress plugin repository or from a downloadable zip file.
+
+### Step 5: Activate the Child Theme
+
+Finally, activate the child theme that you cloned or downloaded in Step 2. Go to the WordPress theme section, find the child theme, and click 'Activate'.
+
 ## Features
 
 - **Timber 2.X Integration**: Utilizes the Timber library for a modern MVC-like development approach in WordPress.
