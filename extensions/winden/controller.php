@@ -89,18 +89,16 @@ function add_winden_v1_completions($completions, $file_path = '/uploads/winden/c
 add_filter('lc_modify_completions', 'add_winden_v1_completions');
 
 /**
- * Appends content from selected post types to a given string.
+ * Appends content from selected post types and specific templates in the child theme to a given string.
  * 
  * This function enhances the 'Winden Worker' optimization by adding content
- * from various post types, including custom and default ones, to the existing
- * content string. It queries for posts, pages, and custom post types defined
- * within the context and appends their content if available.
+ * from various post types, including custom and default ones, and specific template files
+ * in the child theme, to the existing content string. It queries for posts, pages, custom post types,
+ * and includes content from specified template files if available.
  *
  * @param string $content The initial content string to which additional content will be appended.
- * @return string Updated content string with appended post contents.
+ * @return string Updated content string with appended post contents and template file contents.
  */
-add_filter('f!winden/core/worker:compile_content_payload', 'livecanvas_views_append_content_payload', 10);
-
 function livecanvas_views_append_content_payload($content) {
     // Define an array of post types to include in the query.
     $post_types = [
@@ -121,9 +119,32 @@ function livecanvas_views_append_content_payload($content) {
         }
     }
 
-    // Return the concatenated string with appended post contents.
+    // Define the templates to include from the child theme.
+    $template_files = [
+        'template-livecanvas-blocks.php',
+        'template-livecanvas-sections.php',
+        'template-livecanvas-dynamic.php',
+        'template-livecanvas-partials.php'
+    ];
+
+    // Get the path to the child theme directory.
+    $child_theme_path = get_stylesheet_directory();
+
+    // Iterate over the template files and append their contents.
+    foreach ($template_files as $template_file) {
+        $file_path = $child_theme_path . '/' . $template_file;
+        if (file_exists($file_path)) {
+            $content .= file_get_contents($file_path);
+        }
+    }
+
+    // Return the concatenated string with appended post contents and template file contents.
     return $content;
 }
+
+// Attach the function to the 'f!winden/core/worker:compile_content_payload' filter
+add_filter('f!winden/core/worker:compile_content_payload', 'livecanvas_views_append_content_payload', 10);
+
 
 /**
  * Fetches and decodes data from a specified JSON file.

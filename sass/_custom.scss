@@ -2,15 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    @apply bg-gray-50;
+:root {
+    --color-visited: #0d6efd;
+    --color-primary: slate;
+    --color-primary-dark: #000000;
+    --color-primary-light: #3a7bff;
+    /* Adjust as needed */
+    --color-secondary: #0d6efd;
+    --color-tertiary: #0d6efd;
+    --color-shade: #0d6efd;
+    --color-tint: #0d6efd;
+    --color-accent: #ffffff;
+    --color-neutral: #ff00ff;
+    --color-info: #ffffff;
+    --color-success: #00ff00;
+    --color-warning: #ffffff;
+    --color-error: #ff0000;
+
+    --color-base-50: #f8fafc;
+    --color-base-100: #f3f4f6;
+    --color-base-200: #e5e7eb;
+    --color-base-300: #d1d5db;
+    --color-base-400: #9ca3af;
+    --color-base-500: #6b7280;
+    --color-base-600: #4b5563;
+    --color-base-700: #374151;
+    --color-base-800: #1f2937;
+    --color-base-900: #111827;
+    --color-base-950: #090a10;
+    --color-base-lightest: #ffffff;
+    --color-base-darkest: #000000;
 }
 
-.accordion {
-    @apply bg-blue-50 flex flex-col gap-4 p-4 rounded-2xl;
-}
+@layer components {}
 
-
-.accordion-item {
-    @apply bg-white ring-1 p-4 ring-black/10 text-black rounded-2xl;
-}
+@layer utilities {}
