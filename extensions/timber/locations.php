@@ -13,7 +13,11 @@ add_filter('timber/locations', function ($paths) {
 
     /* Example Usage: 
 
-    {% include '@dynamic/hero.extension' %}
+    {{ include('@namespace/filename.extension') }}
+    {{ include('@blocks/filename.extension') }}
+    {{ include('@sections/filename.extension') }}
+    {{ include('@partials/filename.extension') }}
+    {{ include('@dynamic/filename.extension') }}
 
     */
 
