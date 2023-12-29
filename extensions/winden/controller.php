@@ -37,6 +37,18 @@ function generate_autocomplete_script() {
 // The priority is set to 120, which determines the order in which the function is executed relative to others.
 add_action('lc_editor_header', 'generate_autocomplete_script', 120);
 
+/* LC Dynamic Fallback CDN */
+add_action('wp_head', 'enqueue_tailwind_if_dynamic_template');
+
+function enqueue_tailwind_if_dynamic_template()
+{
+    // Check if the URL contains the 'lc_dynamic_template' parameter
+    if (isset($_GET['lc_dynamic_template'])) {
+        echo '<script src="https://cdn.tailwindcss.com"></script>';
+		echo '<script>console.log("Editor CDN Fallback Loaded");</script>';
+    }
+}
+
 
 /**
  * Retrieves dynamic completion options from a JSON file and adds them to the provided completions array.
