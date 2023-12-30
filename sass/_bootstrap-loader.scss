@@ -1,0 +1,173 @@
+// From https://getbootstrap.com/docs/5.3/customize/sass/#importing
+// Custom.scss
+// Option B: Include parts of Bootstrap
+// You can exclude parts of Bootstrap commenting these lines, one by one.
+// Caution: you must know what you're doing. Not truly necessary
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap5/functions";
+
+// 2. Include any default variable overrides here
+@import "ninjabootstrap/variables";
+@import "theme_variables";
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "bootstrap5/variables";
+@import "bootstrap5/variables-dark";
+
+// 4. Include any default map overrides here
+
+//eg optional remove theme colors:
+//$theme-colors: map-remove($theme-colors, "info", "warning", "danger");
+
+// 5. Include remainder of required parts
+@import "bootstrap5/maps";
+@import "bootstrap5/mixins";
+@import "bootstrap5/root";
+
+// 6. Optionally include any other parts as needed
+@import "bootstrap5/utilities";
+// @import "bootstrap5/reboot";
+// @import "bootstrap5/type";
+// @import "bootstrap5/images";
+// @import "bootstrap5/containers";
+// @import "bootstrap5/grid";
+// @import "bootstrap5/tables";
+// @import "bootstrap5/forms";
+// @import "bootstrap5/buttons";
+// @import "bootstrap5/transitions";
+// @import "bootstrap5/dropdown";
+// @import "bootstrap5/button-group";
+// @import "bootstrap5/nav";
+// @import "bootstrap5/navbar";
+// @import "bootstrap5/card";
+// @import "bootstrap5/accordion";
+// @import "bootstrap5/breadcrumb";
+// @import "bootstrap5/pagination";
+// @import "bootstrap5/badge";
+// @import "bootstrap5/alert";
+// @import "bootstrap5/progress";
+// @import "bootstrap5/list-group";
+// @import "bootstrap5/close";
+// @import "bootstrap5/toasts";
+// @import "bootstrap5/modal";
+// @import "bootstrap5/tooltip";
+// @import "bootstrap5/popover";
+// @import "bootstrap5/carousel";
+// @import "bootstrap5/spinners";
+// @import "bootstrap5/offcanvas";
+// @import "bootstrap5/placeholders";
+// @import "bootstrap5/helpers";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+
+@import "ninjabootstrap/positioning";
+@import "ninjabootstrap/sizing";
+@import "ninjabootstrap/letter-spacing";
+@import "ninjabootstrap/borders";
+//@import "ninjabootstrap/tailwind_grays";
+//@import "ninjabootstrap/bootstrap_all_colors";
+@import "ninjabootstrap/theme_colors_shades";
+
+$utilities: map-merge($utilities,
+        (
+            "align": null,
+            "float": null,
+            "object-fit": null,
+            "opacity": null,
+            "overflow": null,
+            "overflow-x": null,
+            "overflow-y": null,
+            "display": null,
+            "shadow": null,
+            "focus-ring": null,
+            "position": null,
+            "top": null,
+            "bottom": null,
+            "start": null,
+            "end": null,
+            "translate-middle": null,
+            "border": null,
+            "border-top": null,
+            "border-end": null,
+            "border-bottom": null,
+            "border-start": null,
+            "border-color": null,
+            "subtle-border-color": null,
+            "border-width": null,
+            "border-opacity": null,
+            "width": null,
+            "max-width": null,
+            "viewport-width": null,
+            "min-viewport-width": null,
+            "height": null,
+            "max-height": null,
+            "viewport-height": null,
+            "min-viewport-height": null,
+            "flex": null,
+            "flex-direction": null,
+            "flex-grow": null,
+            "flex-shrink": null,
+            "flex-wrap": null,
+            "justify-content": null,
+            "align-items": null,
+            "align-content": null,
+            "align-self": null,
+            "order": null,
+            "margin": null,
+            "margin-x": null,
+            "margin-y": null,
+            "margin-top": null,
+            "margin-end": null,
+            "margin-bottom": null,
+            "margin-start": null,
+            "negative-margin": null,
+            "negative-margin-x": null,
+            "negative-margin-y": null,
+            "negative-margin-top": null,
+            "negative-margin-end": null,
+            "negative-margin-bottom": null,
+            "negative-margin-start": null,
+            "padding": null,
+            "padding-x": null,
+            "padding-y": null,
+            "padding-top": null,
+            "padding-end": null,
+            "padding-bottom": null,
+            "padding-start": null,
+            "gap": null,
+            "row-gap": null,
+            "column-gap": null,
+            "font-family": null,
+            "font-size": null,
+            "font-style": null,
+            "font-weight": null,
+            "line-height": null,
+            "text-align": null,
+            "text-decoration": null,
+            "text-transform": null,
+            "white-space": null,
+            "word-wrap": null,
+            "color": null,
+            "text-opacity": null,
+            "text-color": null,
+            "link-opacity": null,
+            "link-offset": null,
+            "link-underline": null,
+            "link-underline-opacity": null,
+            "background-color": null,
+            "bg-opacity": null,
+            "subtle-background-color": null,
+            "gradient": null,
+            "user-select": null,
+            "pointer-events": null,
+            "rounded": null,
+            "rounded-top": null,
+            "rounded-end": null,
+            "rounded-bottom": null,
+            "rounded-start": null,
+            "visibility": null,
+            "z-index": null,
+        ));
+
+@import "bootstrap5/utilities/api";

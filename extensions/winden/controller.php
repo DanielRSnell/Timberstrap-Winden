@@ -7,7 +7,7 @@
  */
 function lc_add_autocomplete_extension() {
     $script_url = get_stylesheet_directory_uri() . '/extensions/winden/assets/autocomplete.js';
-    echo '<script src="' . esc_url($script_url) . '" defer></script>';
+//     echo '<script src="' . esc_url($script_url) . '" defer></script>';
 }
 
 add_action('lc_add_editor_extensions', 'lc_add_autocomplete_extension');
@@ -27,15 +27,52 @@ function generate_autocomplete_script() {
     // Encode the completions array to JSON for use in JavaScript
     $ready_json = json_encode($completions);
 
-    // Echo out the JavaScript code. The suggestions are stored in a const variable.
-    echo '<script data-integration="autocomplete">
-    const suggestions = ' . $ready_json . ';
-    </script>';
+    echo '<script type="application/json" data-integration="autocomplete" data-integration-type="class">
+    ' . $ready_json . '
+</script>';
+	echo '<script type="application/json" data-integration="autocomplete" data-integration-type="shortcode">' . get_lc_shortcodes_json() . '</script>';
+ 
 }
 
 // Attach the generate_autocomplete_script function to the lc_editor_header action hook.
 // The priority is set to 120, which determines the order in which the function is executed relative to others.
 add_action('lc_editor_header', 'generate_autocomplete_script', 120);
+
+
+function get_lc_shortcodes_json() {
+    // Retrieve all registered shortcodes using global variable
+    global $shortcode_tags;
+    
+    // Initialize an array to store the formatted shortcodes
+    $lc_shortcodes = [];
+
+    // Filter and format the shortcodes
+    foreach ($shortcode_tags as $shortcode_name => $function) {
+        if (strpos($shortcode_name, 'lc') !== false) {
+            $lc_shortcodes[] = [
+                'value' => $shortcode_name,    // Plain name of the shortcode
+                'score' => 1,                  // Score value (assuming constant as 1)
+                'meta'  => $shortcode_name     // Shortcode slug (assuming it's the same as name)
+            ];
+        }
+    }
+
+    // Convert the array to JSON and return
+    return json_encode($lc_shortcodes);
+}
+
+
+
+add_action('wp_head', 'enqueue_tailwind_if_dynamic_template');
+
+function enqueue_tailwind_if_dynamic_template()
+{
+    // Check if the URL contains the 'lc_dynamic_template' parameter
+    if (isset($_GET['lc_dynamic_template'])) {
+        echo '<script src="https://cdn.tailwindcss.com"></script>';
+		echo '<script>console.log("Editor CDN Fallback Loaded");</script>';
+    }
+}
 
 
 /**
