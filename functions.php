@@ -25,29 +25,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Load Extensions Controller (Timber, etc.)
 require get_stylesheet_directory() . '/extensions/controllers.php';
 
-function timber_process_content($content) {
-    // Only apply this in the frontend, not in admin area
-    if (!is_admin()) {
-        global $post;
-        // global $wp_query;
-        // Prepare Timber context
-        $context = Timber::context();
-        $context['post'] = Timber::get_post($post->ID);
-        $context['post_content'] = $content;        
-        // $content['query'] = $wp_query;
-        $context['state'] = $context;
-        
-        echo 'Filtered Render';
-
-        // Compile the content with Timber
-        $content = Timber::compile_string($content, $context);
-    }
-
-    return $content;
-}
-
-add_filter('the_content', 'timber_process_content');
-
 // DE-ENQUEUE PARENT THEME BOOTSTRAP JS BUNDLE
 add_action( 'wp_print_scripts', function(){
     wp_dequeue_script( 'bootstrap5' );

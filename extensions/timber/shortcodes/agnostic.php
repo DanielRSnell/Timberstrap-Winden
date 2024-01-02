@@ -1,9 +1,13 @@
 <?php
 
-function agnostic_shortcode($atts, $content = null) {
+function twig_shortcode($atts, $content = null) {
 
-        // Context: Use global post by default
+        global $post;
+        global $wp_query;
+        // Prepare Timber context
         $context = Timber::context();
+        $context['state'] = $context;
+        $context['attributes'] = $atts;
 
         // Compile the content as a Twig template
         $compiled_content = Timber::compile_string($content, $context);
@@ -11,4 +15,5 @@ function agnostic_shortcode($atts, $content = null) {
         return $compiled_content;
     
 }
-add_shortcode('agnostic', 'agnostic_shortcode');
+
+add_shortcode('twig', 'twig_shortcode');

@@ -1,6 +1,6 @@
 # Picostrap Child Theme with Timber 2.X
 
-This child theme for Picostrap leverages the Timber 2.X library, enabling advanced templating in WordPress using the Twig engine. It introduces the 'Agnostic' shortcode for inline Twig templating, providing a seamless integration of Twig directly within WordPress posts and pages.
+This child theme for Picostrap leverages the Timber 2.X library, enabling advanced templating in WordPress using the Twig engine. It introduces the 'twig' shortcode for inline Twig templating, providing a seamless integration of Twig directly within WordPress posts and pages.
 
 ## Installation Guide
 
@@ -30,7 +30,7 @@ Finally, activate the child theme that you cloned or downloaded in Step 2. Go to
 ## Features
 
 - **Timber 2.X Integration**: Utilizes the Timber library for a modern MVC-like development approach in WordPress.
-- **Inline Twig Templating**: Employs the `[agnostic]...[/agnostic]` shortcode for inline Twig templating within WordPress editor.
+- **Inline Twig Templating**: Employs the `[twig]...[/twig]` shortcode for inline Twig templating within WordPress editor.
 - **Picostrap Parent Theme**: Inherits functionalities and styles from the Picostrap WordPress theme.
 
 ## Installation
@@ -41,9 +41,9 @@ Finally, activate the child theme that you cloned or downloaded in Step 2. Go to
 
 ## Usage
 
-### Inline Twig Templating with Agnostic Shortcode
+### Inline Twig Templating with twig Shortcode
 
-The `[agnostic]...[/agnostic]` shortcode enables you to embed Twig code directly in WordPress posts or pages. This feature allows dynamic content rendering and advanced templating capabilities.
+The `[twig]...[/twig]` shortcode enables you to embed Twig code directly in WordPress posts or pages. This feature allows dynamic content rendering and advanced templating capabilities.
 
 #### Basic Example:
 
@@ -75,7 +75,7 @@ Here's an example using the child theme directories and some simple twig markup 
 
 ```twig
 <div class="live-shortcode">
-  [agnostic]
+  [twig]
 
     {# Define a Twig variable #}
     {% set example = "example" %}
@@ -89,7 +89,7 @@ Here's an example using the child theme directories and some simple twig markup 
     {# Include a loop template from the 'dynamic' namespace #}
     {{ include('@dynamic/loop') }}
 
-    [/agnostic]
+    [/twig]
 </div>
 ```
 
@@ -97,7 +97,7 @@ In this example, the Twig `{% set %}` tag is used to define a variable, and the 
 
 ## Usage with File System / Custom Post Types
 
-If you want to include a twig template that appears within Custom Blocks or Sections for the Livecanvas editor. Just add your markup to a `.html` file and add `live-shortcode` to the parent, then wrap your markup with `[agnostic] HTML or TWIG HERE [/agnostic]`.
+If you want to include a twig template that appears within Custom Blocks or Sections for the Livecanvas editor. Just add your markup to a `.html` file and add `live-shortcode` to the parent, then wrap your markup with `[twig] HTML or TWIG HERE [/twig]`.
 
 ## Customization
 

@@ -39,16 +39,16 @@ function generate_autocomplete_script() {
 add_action('lc_editor_header', 'generate_autocomplete_script', 120);
 
 /* LC Dynamic Fallback CDN */
-add_action('wp_head', 'enqueue_tailwind_if_dynamic_template');
+// add_action('wp_head', 'enqueue_tailwind_if_dynamic_template');
 
-function enqueue_tailwind_if_dynamic_template()
-{
-    // Check if the URL contains the 'lc_dynamic_template' parameter
-    if (isset($_GET['lc_dynamic_template'])) {
-        echo '<script src="https://cdn.tailwindcss.com"></script>';
-		echo '<script>console.log("Editor CDN Fallback Loaded");</script>';
-    }
-}
+// function enqueue_tailwind_if_dynamic_template()
+// {
+//     // Check if the URL contains the 'lc_dynamic_template' parameter
+//     if (isset($_GET['lc_dynamic_template'])) {
+//         echo '<script src="https://cdn.tailwindcss.com"></script>';
+// 		echo '<script>console.log("Editor CDN Fallback Loaded");</script>';
+//     }
+// }
 
 
 function get_lc_shortcodes_json() {
